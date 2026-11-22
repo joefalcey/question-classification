@@ -26,6 +26,10 @@ class MajorityVote:
     def __repr__(self):
         return self.majority_label
 
+    @property
+    def name(self) -> str:
+        return "MajorityVote"
+
 if __name__ == '__main__':
     import pathlib
     import os
