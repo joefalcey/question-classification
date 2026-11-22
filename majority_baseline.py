@@ -43,3 +43,8 @@ if __name__ == '__main__':
     majority_vote = MajorityVote()
     majority_vote.train(training_data)
     predictions = majority_vote.predict(test_data)
+    true_labels = [line.label[0] for line in training_data]
+    print('Loading sample set...')
+    for true, predicted in zip(true_labels[:10], predictions[:10]):
+        print(f'true label={true}, predicted label={predicted}')
+        
