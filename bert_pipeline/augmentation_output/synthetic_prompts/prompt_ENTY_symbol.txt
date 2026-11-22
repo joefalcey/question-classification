@@ -1,0 +1,30 @@
+I am training a classifier on the TREC question classification dataset.
+The class ENTY:symbol has the following 11 training example(s):
+
+1. What sign is The Water Carrier the zodiacal symbol for ?
+2. What was the distinguishing mark on the `` Little Rascals '' dog ?
+3. What are the signs of a country going into a recession ?
+4. What is the chemical symbol for nitrogen ?
+5. What sign is the best love match for a horoscope sign ?
+6. What is the trademark of a Washington Redskin 's fan ?
+7. What playing card symbolizes death ?
+8. What 's the symbol for the zodiacal sign Gemini ?
+9. What is the zodiac sign for August 14 ?
+10. What is the celtic symbol for `` life '' ?
+11. What is the chemical formula for napalm ?
+
+Class Description:
+- Coarse category: ENTY (Entity/Thing)
+- Fine-grained: symbol (symbol)
+
+Please generate 89 completely new, diverse, open-domain questions that belong to this exact category.
+
+Requirements:
+1. Questions should be natural and casual, like a person would naturally ask
+2. Avoid overly formal or academic language
+3. Vary the question structure (start with different question words: What, Which, Who, Where, How, etc.)
+4. Use diverse vocabulary - don't repeat the same words
+5. Questions should be about different specific examples within this category
+6. Each question must be unique and different from the examples above
+
+Output format: Print each question on a new line, nothing else.

@@ -1,0 +1,23 @@
+I am training a classifier on the TREC question classification dataset.
+The class ENTY:currency has the following 4 training example(s):
+
+1. What money was used by them ?
+2. What money was used here ?
+3. What type of currency is used in China ?
+4. What currency is used in Australia ?
+
+Class Description:
+- Coarse category: ENTY (Entity/Thing)
+- Fine-grained: currency (currency/money)
+
+Please generate 96 completely new, diverse, open-domain questions that belong to this exact category.
+
+Requirements:
+1. Questions should be natural and casual, like a person would naturally ask
+2. Avoid overly formal or academic language
+3. Vary the question structure (start with different question words: What, Which, Who, Where, How, etc.)
+4. Use diverse vocabulary - don't repeat the same words
+5. Questions should be about different specific examples within this category
+6. Each question must be unique and different from the examples above
+
+Output format: Print each question on a new line, nothing else.

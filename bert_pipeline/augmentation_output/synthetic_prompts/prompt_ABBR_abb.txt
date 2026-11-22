@@ -1,0 +1,35 @@
+I am training a classifier on the TREC question classification dataset.
+The class ABBR:abb has the following 16 training example(s):
+
+1. What is the abbreviation for micro ?
+2. What is the abbreviation of the company name ` General Motors ' ?
+3. What is the abbreviated expression for the National Bureau of Investigation ?
+4. What is the abbreviation of General Motors ?
+5. What 's the abbreviation for trinitrotoluene ?
+6. What is the abbreviated form of the National Bureau of Investigation ?
+7. What is the acronym for the National Bureau of Investigation ?
+8. What is the abbreviated term used for the National Bureau of Investigation ?
+9. What 's the abbreviation for limited partnership ?
+10. What is the abbreviation of the National Bureau of Investigation ?
+11. What does the number `` 5 '' stand for on FUBU clothing ?
+12. What is the abbreviation for Original Equipment Manufacturer ?
+13. What is the correct way to abbreviate cc. at the bottom of a business letter ?
+14. What is the abbreviation of the International Olympic Committee ?
+15. What is Mikhail Gorbachev 's middle initial ?
+16. What is the acronym for the rating system for air conditioner efficiency ?
+
+Class Description:
+- Coarse category: ABBR (Abbreviation)
+- Fine-grained: abb (abbreviation/abbreviation)
+
+Please generate 84 completely new, diverse, open-domain questions that belong to this exact category.
+
+Requirements:
+1. Questions should be natural and casual, like a person would naturally ask
+2. Avoid overly formal or academic language
+3. Vary the question structure (start with different question words: What, Which, Who, Where, How, etc.)
+4. Use diverse vocabulary - don't repeat the same words
+5. Questions should be about different specific examples within this category
+6. Each question must be unique and different from the examples above
+
+Output format: Print each question on a new line, nothing else.

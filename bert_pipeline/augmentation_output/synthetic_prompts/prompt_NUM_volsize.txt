@@ -1,0 +1,32 @@
+I am training a classifier on the TREC question classification dataset.
+The class NUM:volsize has the following 13 training example(s):
+
+1. What is the acreage of the Chappellet vineyard ?
+2. What is the size of the largest akita ?
+3. How large is the Arctic refuge to preserve unique wildlife and wilderness value on Alaska 's north coast ?
+4. How big is a quart ?
+5. What is the size of Argentina ?
+6. How big is our galaxy in diameter ?
+7. How big is a baby bald eagle ?
+8. How big is Australia ?
+9. How big is a normal size penis for a 15-year-old ?
+10. How big is the Electoral College ?
+11. How big is the Chappellet vineyard ?
+12. How big is the largest diamond ?
+13. How big is the universe actually ?
+
+Class Description:
+- Coarse category: NUM (Numeric/Quantity)
+- Fine-grained: volsize (volsize)
+
+Please generate 87 completely new, diverse, open-domain questions that belong to this exact category.
+
+Requirements:
+1. Questions should be natural and casual, like a person would naturally ask
+2. Avoid overly formal or academic language
+3. Vary the question structure (start with different question words: What, Which, Who, Where, How, etc.)
+4. Use diverse vocabulary - don't repeat the same words
+5. Questions should be about different specific examples within this category
+6. Each question must be unique and different from the examples above
+
+Output format: Print each question on a new line, nothing else.

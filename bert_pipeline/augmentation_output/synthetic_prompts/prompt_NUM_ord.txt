@@ -1,0 +1,25 @@
+I am training a classifier on the TREC question classification dataset.
+The class NUM:ord has the following 6 training example(s):
+
+1. What chapter of the Bible has the most verses ?
+2. Where does the U.S. rank among world countries in area ?
+3. What chapter of Gone with the Wind has Rhett Butler leaving Scarlett O 'Hara ?
+4. What chapter of Gone with the Wind has Rhett Butler leaving Scarlett O 'Hara ?
+5. What chapter of the Bible has the most verses ?
+6. Where does the U.S. rank among world countries in area ?
+
+Class Description:
+- Coarse category: NUM (Numeric/Quantity)
+- Fine-grained: ord (ordinal/rank)
+
+Please generate 94 completely new, diverse, open-domain questions that belong to this exact category.
+
+Requirements:
+1. Questions should be natural and casual, like a person would naturally ask
+2. Avoid overly formal or academic language
+3. Vary the question structure (start with different question words: What, Which, Who, Where, How, etc.)
+4. Use diverse vocabulary - don't repeat the same words
+5. Questions should be about different specific examples within this category
+6. Each question must be unique and different from the examples above
+
+Output format: Print each question on a new line, nothing else.

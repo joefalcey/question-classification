@@ -1,0 +1,93 @@
+# Paste generated questions for NUM_temp here - one question per line
+At what point does a whole roasted chicken reach a safe internal heat?
+How cool should the fridge be to store raw poultry overnight?
+What is the traditional cooking temp for an authentic German Sauerbraten?
+How warm does oil need to be for deep frying french fries?
+What's the boiling point of milk at sea level?
+How low do they keep the freezers in Australian supermarkets?
+What degree do you need to sear a steak perfectly?
+How much heat is required to melt dark chocolate without burning it?
+At what mark should I pull the brisket out of the smoker?
+What's the ideal serving warmth for a classic mulled wine?
+How cold does a commercial walk-in cooler need to stay to pass inspection?
+What was the highest recorded heatwave in Stuttgart last summer?
+How cold does it usually get in Esslingen during January?
+What's the average winter chill in the outback?
+How freezing is it going to be tomorrow morning?
+What's the typical daytime high in Sydney during Christmas?
+How frosty does the Black Forest get in December?
+What kind of highs are we expecting for the weekend?
+How warm is the Mediterranean Sea in August?
+What is the absolute lowest chill factor ever recorded on Earth?
+How hot does it feel outside with the humidity right now?
+What constitutes a dangerous fever for a toddler?
+How warm is the average human body?
+What's the normal resting heat for a domestic cat?
+At what point does hypothermia start setting in?
+How cold can a person's core get before it's fatal?
+What is considered a low-grade fever in adults?
+How hot does a dog get when it's panting heavily?
+What reading on the thermometer means I should see a doctor?
+How warm do incubators keep premature babies?
+What is the melting point of pure gold?
+How hot does a standard graphics card get when running heavy machine learning models?
+At what degree does liquid nitrogen boil?
+How cool should I keep my server room?
+What's the safe operating heat for a laptop processor?
+How freezing is the vacuum of outer space?
+What degree Celsius does water freeze at?
+How blazing hot is the surface of the sun?
+What's the thermal limit of a standard car engine before it overheats?
+How cold is liquid oxygen?
+At what point does iron turn into a liquid?
+What is the freezing point of rubbing alcohol?
+How hot is lava right when it erupts?
+What's the required thermostat setting for a logistics warehouse storing perishables?
+How warm does a restaurant kitchen get during the dinner rush?
+What is a comfortable office climate for most employees?
+How cold is the dairy section at the local grocery store?
+At what point does the AC kick in automatically?
+What's the legal minimum warmth for a rented apartment in winter?
+How hot can the inside of a delivery van get in the afternoon sun?
+How warm should a baby's bathwater be?
+What do I set the thermostat to while I'm away on vacation?
+How hot is the steam coming out of an espresso machine?
+At what degree should I wash my delicate clothes?
+What's the optimal serving chill for a light white wine?
+How scorching is the sand at the beach at noon?
+What should the dial be at for a normal load of laundry?
+How warm does a greenhouse get during a sunny spring day?
+What's the maximum heat a typical hair straightener reaches?
+How cold should my swimming pool be for a refreshing dip?
+At what point does the thermostat trigger the furnace?
+What's the heat rating on that new sleeping bag?
+How hot is a soldering iron when it's ready to use?
+What is the recommended heat for brewing green tea?
+How frosty is the ice rink before a hockey game?
+At what degree do you pasteurize apple cider?
+How warm is a hot tub usually kept at a resort?
+What's the boiling point of antifreeze?
+How cold does dry ice actually get?
+What is the typical firing heat for a pottery kiln?
+How scorching is a desert during the peak of summer?
+What degree does the dashboard indicate when the car is warmed up?
+How cool is the breeze coming off the ocean right now?
+At what measurement does tempered glass finally shatter from heat?
+What's the right level to set the heating pad on for a sore back?
+How hot does a campfire burn at its center?
+What is the standard chill for a keg of beer?
+How warm does it have to be outside to melt a snowman?
+What degree marks the start of a heatwave advisory?
+How cold is the water at the bottom of the Mariana Trench?
+At what point does condensation freeze on the windows?
+What's the maximum operating heat for a lithium-ion battery?
+How hot does the asphalt get on a summer afternoon?
+What is the required sanitizing heat for an industrial dishwasher?
+How freezing does it have to be to cancel school?
+What's the optimal ripening warmth for bananas?
+How hot is the flame of a butane torch?
+At what degree does wax start to melt for candle making?
+What is the ideal soil warmth for planting tomato seeds?
+How cold does the blast freezer need to be to flash-freeze fish?
+What's the highest heat a space shuttle endures during reentry?
+How warm should a terrarium be for a bearded dragon?

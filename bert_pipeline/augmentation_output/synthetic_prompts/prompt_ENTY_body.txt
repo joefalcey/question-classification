@@ -1,0 +1,35 @@
+I am training a classifier on the TREC question classification dataset.
+The class ENTY:body has the following 16 training example(s):
+
+1. The corpus callosum is in what part of the body ?
+2. What part of your body contains the corpus callosum ?
+3. What 's the colored part of the eye called ?
+4. What dangles over the tongue from the palate ?
+5. Where does your hair grow the fastest ?
+6. What is the only gland in humans that can regenerate itself ?
+7. Which leg does a cat move with its left front leg when walking - its left rear or right rear leg ?
+8. What are the names of the different toes ?
+9. What is the weakest bone in the body ?
+10. Which ear can most people hear better with ?
+11. What carries sperm up into the pelvic region ?
+12. What two body parts grow all your life ?
+13. Where is the human skin least sensitive ?
+14. What are the main blood vessels ?
+15. What organ contains the islands of Langerhans ?
+16. What is the softest part of the body ?
+
+Class Description:
+- Coarse category: ENTY (Entity/Thing)
+- Fine-grained: body (body part)
+
+Please generate 84 completely new, diverse, open-domain questions that belong to this exact category.
+
+Requirements:
+1. Questions should be natural and casual, like a person would naturally ask
+2. Avoid overly formal or academic language
+3. Vary the question structure (start with different question words: What, Which, Who, Where, How, etc.)
+4. Use diverse vocabulary - don't repeat the same words
+5. Questions should be about different specific examples within this category
+6. Each question must be unique and different from the examples above
+
+Output format: Print each question on a new line, nothing else.

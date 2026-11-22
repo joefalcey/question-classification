@@ -1,0 +1,92 @@
+# Paste generated questions for NUM_code here - one question per line
+What's the zip code for Beverly Hills?
+Do you know the postal code for downtown Toronto?
+Which zip code covers the Empire State Building?
+What is the mailing code for Santa Claus in Canada?
+Can you tell me the post code for Central London?
+What's the area zip for Miami Beach?
+How do I find the routing zip code for the IRS?
+What is the zip for the 90210 TV show area?
+How do I reach customer service for Apple?
+What number should I dial for a pizza delivery at Domino's?
+Which digits do I press to call the UK from the US?
+What's the country code for Japan?
+Can you give me the toll-free number for Geico?
+What is the hotline for poison control?
+Do you happen to have the contact digits for the local DMV?
+What's the prefix to dial out of a hotel room usually?
+Which area code is 212 assigned to?
+What is the emergency dial for police in Europe?
+How can I get ahold of Netflix support by phone?
+What is the WhatsApp verification SMS code usually like?
+What's the three-letter abbreviation for O'Hare?
+Which airport uses the code JFK?
+Can you tell me the IATA code for Heathrow?
+What is the flight number for the morning Delta trip to Atlanta?
+How do I look up the gate code for my Southwest flight?
+What's the booking reference number format for United Airlines?
+Which code is used for the train station in Paris?
+What is the identifying code for the Atlanta international terminal?
+What is the ISBN for the first Harry Potter book?
+Can you find the UPC barcode number for a standard Coke can?
+Which product code goes with the new PlayStation 5?
+What's the SKU for that specific IKEA desk?
+How do I find the serial digits on the back of my TV?
+What is the part number for a 2010 Honda Civic alternator?
+Do you know the exact model code of the latest iPhone?
+What is the tracking number format for FedEx ground?
+How many digits are in a standard UPS tracking ID?
+Can you check the shipping code for my Amazon package?
+What's the waybill number for DHL international shipments?
+Which code do I need to track my USPS certified mail?
+What is the routing number for Chase Bank in New York?
+Can you give me the SWIFT code for Barclays?
+What's the sort code for NatWest in the UK?
+How many numbers make up a standard Visa credit card?
+What is the IBAN format for a bank account in Germany?
+Which three digits make up the CVV on a Mastercard?
+What's the BIN code for an American Express card?
+What is the VIN number on a Tesla Model 3?
+How many characters are in a standard vehicle identification number?
+What is the license plate number of the Ghostbusters car?
+Can you tell me the format of a UK National Insurance number?
+What's the social security number layout in the States?
+Which code identifies my specific driver's license?
+What is the passport book number located on the data page?
+What is the HTTP status code for "Not Found"?
+Which error number means you are completely locked out of Windows?
+Can you tell me the blue screen of death stop code?
+What's the hex code for the color pure white?
+How do I find the MAC address code on my laptop?
+What is the default router login IP address?
+Which port number does HTTP traffic normally use?
+What's the activation key for Microsoft Office 365?
+Can you give me the cheat code for infinite health in GTA?
+What is the entry passcode for the front gate?
+Do you know the access code for the employee breakroom?
+Which combination number opens a standard Master Lock?
+What's the dialing extension for the HR department?
+How do I get the Wi-Fi password code for the cafe?
+What is the secret PIN to unlock my voicemail?
+Can you tell me the promo code for free shipping on Shein?
+What's the coupon code to get twenty percent off at checkout?
+Which access key do I need for the AWS server?
+What is the authenticator app code for my Gmail?
+How many digits are in a standard electronic lock code?
+What's the registration number for my new boat?
+Can you give me the invite code for the private Discord server?
+What is the barcode number on a standard driver's license?
+Which identification number does the hospital use for patients?
+What's the reference code on my utility bill?
+How do I find the confirmation code for my hotel reservation?
+What is the ticket number for the upcoming concert?
+Can you tell me the dial-in PIN for the Zoom meeting?
+What's the locker combination for the gym?
+Which verification code did they just text to my phone?
+What is the security code for the alarm system?
+Do you have the pairing code for these Bluetooth headphones?
+What's the authorization number on this medical claim?
+How do I find the group policy code for my insurance?
+What is the redemption code on the back of the gift card?
+Which serial code validates the warranty on my fridge?
+What's the transaction ID for my latest PayPal purchase?

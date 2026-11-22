@@ -1,0 +1,32 @@
+I am training a classifier on the TREC question classification dataset.
+The class ENTY:plant has the following 13 training example(s):
+
+1. What shrubs can be planted that will be safe from deer ?
+2. What plant has the largest seed ?
+3. What are two plants that clothes are made from ?
+4. What plant is rum made from ?
+5. What flower did Vincent Van Gogh paint ?
+6. What kind of tree graces Lebanon 's flag ?
+7. What kind of flowers does detective Nero Wolfe raise ?
+8. What are some colorful flowers that will bloom in the fall in New England ?
+9. What plants are found in an estuary ?
+10. What is state tree of Nebraska ?
+11. What common plant has a button , cap , cup , gills , and ring ?
+12. What are some of Australia 's native flora ?
+13. What is the most widely cultivated plant ?
+
+Class Description:
+- Coarse category: ENTY (Entity/Thing)
+- Fine-grained: plant (plant)
+
+Please generate 87 completely new, diverse, open-domain questions that belong to this exact category.
+
+Requirements:
+1. Questions should be natural and casual, like a person would naturally ask
+2. Avoid overly formal or academic language
+3. Vary the question structure (start with different question words: What, Which, Who, Where, How, etc.)
+4. Use diverse vocabulary - don't repeat the same words
+5. Questions should be about different specific examples within this category
+6. Each question must be unique and different from the examples above
+
+Output format: Print each question on a new line, nothing else.
