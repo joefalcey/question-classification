@@ -18,6 +18,10 @@ class RandomChoice:
         # Returns random labels for each test instance
         return [random.choice(self.label_list) for _ in test_data]
 
+    @property
+    def name(self) -> str:
+        return "RandomChoice"
+
 if __name__ == '__main__':
     import pathlib
     import os
