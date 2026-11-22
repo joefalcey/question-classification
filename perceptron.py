@@ -27,9 +27,6 @@ class Perceptron:
         """Multiclass perceptron classifier for labeled text data.
 
         Attributes:
-            use_bigrams: Bigrams as features instead of single tokens.
-            use_tfidf: Implementation with TF-IDF.
-            use_embeddings = Embeddings as features.
             epochs: Number of full passes over the training dataset.
         """
         self.weights = defaultdict(lambda: defaultdict(float))
@@ -39,6 +36,8 @@ class Perceptron:
         self.use_embeddings = use_embeddings
         self.vectorizer = None
         self.embedder = None
+        self.epochs = epochs
+        self.verbose = verbose
 
     def _extract_features(self, text: Text) -> set:
         tokens = ' '.join(text.tokens).split()
@@ -65,7 +64,8 @@ class Perceptron:
                 scores[c] = self.weights[c][f] * val
         return max(scores.keys(), key=lambda k: scores[k])
 
-    def train(self, training_data: list[Text], epochs: int = 10, verbose: bool = True) -> None:
+    def train(self, training_data: list[Text], epochs: int = 10) -> None:
+        verbose = self.verbose
         if self.use_embeddings:
             if verbose: print(f"Training Dense Embeddings Perceptron for {epochs} epochs...")
             self.embedder = DenseVectorizer()
@@ -118,6 +118,5 @@ if __name__ == "__main__":
     predictions = perceptron.predict(test_data)
     true_labels = [line.label[0] for line in training_data]
     print('\nLoading sample set...')
-  
     for true, predicted in zip(true_labels[:10], predictions[:10]):
         print(f'true label={true}, predicted label={predicted}')
