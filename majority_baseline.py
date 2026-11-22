@@ -37,5 +37,4 @@ if __name__ == '__main__':
     test_data = [Text(line) for line in test_file]
     majority_vote = MajorityVote()
     majority_vote.train(training_data)
-    print(majority_vote.majority_label)
-    print(majority_vote.predict(test_data))
+    predictions = majority_vote.predict(test_data)
