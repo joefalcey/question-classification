@@ -37,4 +37,8 @@ if __name__ == '__main__':
     random_choice = RandomChoice(verbose=True)
     random_choice.train(training_data)
     predictions = random_choice.predict(test_data)
-    print(predictions[:10])
+    true_labels = [line.label[0] for line in training_data]
+    print('Loading sample set...')
+    for true, predicted in zip(true_labels[:10], predictions[:10]):
+        print(f'true label={true}, predicted label={predicted}')
+        
