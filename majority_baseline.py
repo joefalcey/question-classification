@@ -12,7 +12,8 @@ class MajorityVote:
         self.training_data = Text
         self.majority_label = str()
 
-    def train(self, training_data: list[Text]) -> None:
+    def train(self, training_data: list[Text], verbose = False) -> None:
+        if verbose: print(f"Training with {len(training_data)} samples...")
         label_list = [line.label[0] for line in training_data]
         label_counts = Counter(label_list)
         self.majority_label = Counter(label_list).most_common(1)[0][0]
