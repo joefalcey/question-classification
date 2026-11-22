@@ -27,6 +27,9 @@ class Perceptron:
         """Multiclass perceptron classifier for labeled text data.
 
         Attributes:
+            use_bigrams: Bigrams as features instead of single tokens.
+            use_tfidf: Implementation with TF-IDF.
+            use_embeddings = Embeddings as features.
             epochs: Number of full passes over the training dataset.
         """
         self.weights = defaultdict(lambda: defaultdict(float))
