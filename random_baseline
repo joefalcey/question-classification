@@ -11,7 +11,8 @@ class RandomChoice:
     def __init__(self):
         self.label_list = []
 
-    def train(self, training_data: list[Text]) -> None:
+    def train(self, training_data: list[Text], verbose= False) -> None:
+        if verbose: print(f"Training with {len(training_data)} samples...")
         self.label_list = [line.label[0] for line in training_data]
 
     def predict(self, test_data: list[Text]) -> list:
