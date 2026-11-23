@@ -64,7 +64,8 @@ class Perceptron:
                 scores[c] = self.weights[c][f] * val
         return max(scores.keys(), key=lambda k: scores[k])
 
-    def train(self, training_data: list[Text], epochs: int = 10) -> None:
+    def train(self, training_data: list[Text]) -> None:
+        epochs = self.epochs
         verbose = self.verbose
         if self.use_embeddings:
             if verbose: print(f"Training Dense Embeddings Perceptron for {epochs} epochs...")
@@ -113,7 +114,7 @@ if __name__ == "__main__":
     test_file = read_data(path / 'TREC_10.label')
     training_data = [Text(line) for line in train_file]
     test_data = [Text(line) for line in test_file]
-    perceptron = Perceptron(verbose=True)
+    perceptron = Perceptron(epochs=10, verbose=True)
     perceptron.train(training_data)
     predictions = perceptron.predict(test_data)
     true_labels = [line.label[0] for line in training_data]
