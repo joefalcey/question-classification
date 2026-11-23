@@ -96,12 +96,12 @@ class Evaluation:
 
     def print_report(self, eval_list: list, model_name: str = "Model") -> None:
         print(model_name, ":")
-        def print_metrics(spec = 'macro-'):
+        def print_metrics():
+            spec = self.spec
             names = [f'{spec}precision',
                      f'{spec}recall', f'{spec}f1']
             for metric, name in zip(self.metrics, names):
-                if name != 'accuracy':
-                    print(f'  {name} = {metric*100:.2f}%')
+                print(f'  {name} = {metric*100:.2f}%')
         self.spec = 'macro-'
         self.calculations(eval_list)
         print(f'  accuracy = {self.accuracy*100:.2f}%')
@@ -109,10 +109,10 @@ class Evaluation:
         if self.verbose:
             self.spec = 'micro-'
             self.calculations(eval_list)
-            print_metrics(self.spec)
+            print_metrics()
             self.spec = 'weighted '
             self.calculations(eval_list)
-            print_metrics(self.spec)
+            print_metrics()
 
 if __name__ == '__main__':
     import pathlib
