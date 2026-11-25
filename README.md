@@ -1,5 +1,7 @@
 # Question Type Classification
 
+Developed as part of the Team Lab module in the M.Sc. Computational Linguistics program at the University of Stuttgart (IMS) alongside Iftekhar Ahmed Uday.
+
 This repository contains an NLP pipeline designed to classify open-domain English questions into semantic categories using the **TREC Question Classification dataset**.
 
 The project explores a progression of machine learning architectures—ranging from baseline models and custom Perceptrons to Scikit-Learn SVMs and BERT with data augmentation—finding that **proper data augmentation enables neural networks to significantly outperform linear approaches**.
