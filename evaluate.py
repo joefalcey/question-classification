@@ -1,141 +1,145 @@
+from typing import List, Dict, Tuple
 from collections import defaultdict
-import argparse
-
 import data_reader
-from data_reader import Text
+import majority_baseline
 
-main_parser = data_reader.parser
-parser = argparse.ArgumentParser(parents=[main_parser], add_help=False)
-args = parser.parse_args()
-if args.verbose: verbose = True
 
-class Evaluation:
-    def __init__(self, verbose: bool = False) -> None:
-        self.metrics = []
-        self.verbose = verbose
-        self.accuracy = 0.0
-        self.precision = 0.0
-        self.recall = 0.0
-        self.f1 = 0.0
-        self.spec = 'macro-'
+def evaluate(true_labels: List[str], predicted_labels: List[str], verbose: bool = True):
+    """
+    Evaluate predictions and return macro F1 score.
+    If verbose=True, prints per-class metrics.
+    """
+    total_instances = len(true_labels)
+    correct_predictions = sum(1 for true, pred in zip(true_labels, predicted_labels) if true == pred)
+    accuracy = correct_predictions / total_instances
 
-    def evaluate(self, true_labels: list[str], predicted_labels: list[str]) -> list:
-        total_instances = len(true_labels)
-        classes = set(true_labels)
-        self.classes = classes
-        tp_dict = defaultdict(lambda: defaultdict(int))
-        error_dict = defaultdict(lambda: defaultdict(int))
-        support_dict = defaultdict(int)
-        correct_quant = 0
+    if verbose:
+        print(f"Overall Accuracy: {accuracy * 100:.2f}%\n")
 
-        for c in classes:
-            tp_dict[c][c] = 0
-            for sc in classes:
-                if c != sc:
-                    error_dict[c][sc] = 0
+    classes = set(true_labels)
+    if verbose:
+        print(f"{'Class':<12} | {'Precision':<10} | {'Recall':<10} | {'F1-Score':<10} | {'Support':<8}")
 
-        for true_label, predicted_label in zip(true_labels, predicted_labels):
-            if true_label == predicted_label:
-                correct_quant += 1
-                tp_dict[true_label][predicted_label] += 1
-            else:
-                error_dict[true_label][predicted_label] += 1
+    tp_dict = defaultdict(int)
+    fp_dict = defaultdict(int)
+    fn_dict = defaultdict(int)
+    support_dict = defaultdict(int)
 
-        precisions = []
-        recalls = []
-        f1s = []
-        for c in classes:
-            tp = tp_dict[c][c]
-            fn = sum(error_dict[c].values())
-            fp = sum(error_dict[other][c] for other in classes if other != c)
-            support_dict[c] = tp + fn
-            p = tp / (tp + fp) if (tp + fp) > 0 else 0.0
-            r = tp / (tp + fn) if (tp + fn) > 0 else 0.0
-            f1 = (2 * p * r / (p + r)) if (p + r) > 0 else 0.0
-            precisions.append(p)
-            recalls.append(r)
-            f1s.append(f1)
-        return [classes, total_instances, correct_quant, precisions, recalls, f1s, support_dict]
-
-    def calculations(self, eval_list: list) -> None:
-        (classes, total_instances, correct_quant, precisions, recalls,
-            f1s, support_dict) = eval_list
-        num_classes = len(classes)
-        self.accuracy = correct_quant / total_instances if total_instances > 0 else 0.0
-        if self.spec == 'macro-':
-            self.precision = sum(precisions) / num_classes if num_classes > 0 else 0.0
-            self.recall = sum(recalls) / num_classes if num_classes > 0 else 0.0
-            self.f1 = sum(f1s) / num_classes if num_classes > 0 else 0.0
-        elif self.spec == 'micro-':
-            tp_total = correct_quant
-            fp_total = total_instances - correct_quant
-            fn_total = total_instances - correct_quant
-            micro_p = (tp_total / (tp_total + fp_total)
-                if (tp_total + fp_total) > 0 else 0.0)
-            micro_r = (tp_total / (tp_total + fn_total)
-                if (tp_total + fn_total) > 0 else 0.0)
-            micro_f1 = ((2 * micro_p * micro_r / (micro_p + micro_r))
-                if (micro_p + micro_r) > 0 else 0.0)
-            self.precision = micro_p
-            self.recall = micro_r
-            self.f1 = micro_f1
-        elif self.spec == 'weighted ':
-            weighted_p = sum(p * support_dict.get(c, 0)
-                for c, p in zip(classes, precisions))
-            weighted_r = sum(r * support_dict.get(c, 0)
-                for c, r in zip(classes, recalls))
-            weighted_f1 = sum(f * support_dict.get(c, 0)
-                for c, f in zip(classes, f1s))
-            self.precision = weighted_p / total_instances if total_instances > 0 else 0.0
-            self.recall = weighted_r / total_instances if total_instances > 0 else 0.0
-            self.f1 = weighted_f1 / total_instances if total_instances > 0 else 0.0
+    for true_l, pred_l in zip(true_labels, predicted_labels):
+        support_dict[true_l] += 1
+        if true_l == pred_l:
+            tp_dict[true_l] += 1
         else:
-            raise ValueError(f"Unsupported metric spec: {self.spec!r}")
+            fp_dict[pred_l] += 1
+            fn_dict[true_l] += 1
 
-        self.metrics = [self.precision, self.recall, self.f1]
+    total_f1 = 0.0
+    global_tp = global_fp = global_fn = 0
 
-    def print_report(self, eval_list: list, model_name: str = "Model") -> None:
-        print(model_name, ":")
-        def print_metrics():
-            spec = self.spec
-            names = [f'{spec}precision',
-                     f'{spec}recall', f'{spec}f1']
-            for metric, name in zip(self.metrics, names):
-                print(f'  {name} = {metric*100:.2f}%')
-        self.spec = 'macro-'
-        self.calculations(eval_list)
-        print(f'  accuracy = {self.accuracy*100:.2f}%')
-        print_metrics()
-        if self.verbose:
-            self.spec = 'micro-'
-            self.calculations(eval_list)
-            print_metrics()
-            self.spec = 'weighted '
-            self.calculations(eval_list)
-            print_metrics()
+    for c in sorted(classes):
+        tp = tp_dict[c]
+        fp = fp_dict[c]
+        fn = fn_dict[c]
+        support = support_dict[c]
 
-if __name__ == '__main__':
-    import pathlib
-    from data_reader import read_data
-    import os
-    import majority_baseline
-    import random_baseline
-    import perceptron
-    path = pathlib.Path(os.getcwd()) / 'data'
-    train_file = read_data(path / 'train_5500.label')
-    test_file = read_data(path / 'TREC_10.label')
-    training_data = [Text(line) for line in train_file]
-    test_data = [Text(line) for line in test_file]
+        global_tp += tp
+        global_fp += fp
+        global_fn += fn
 
-    majority_vote = majority_baseline.MajorityVote()
-    random_choice = random_baseline.RandomChoice()
-    perceptron = perceptron.Perceptron()
-    Models = [majority_vote, random_choice, perceptron,]
+        precision = tp / (tp + fp) if (tp + fp) > 0 else 0.0
+        recall = tp / (tp + fn) if (tp + fn) > 0 else 0.0
+        f1 = 2 * (precision * recall) / (precision + recall) if (precision + recall) > 0 else 0.0
 
-    for m in Models:
-        m.train(training_data)
-        predictions = m.predict(test_data)
-        true_labels = [item.label[0] for item in test_data]
-        evaluation = Evaluation(verbose=True)
-        eval_list = evaluation.evaluate(true_labels, predictions)
-        evaluation.print_report(eval_list, str(m.name))
+        total_f1 += f1
+
+        if verbose:
+            print(f"{c:<12} | {precision:.4f}     | {recall:.4f}     | {f1:.4f}     | {support:<8}")
+
+    macro_f1 = total_f1 / len(classes)
+
+    micro_precision = global_tp / (global_tp + global_fp) if (global_tp + global_fp) > 0 else 0.0
+    micro_recall = global_tp / (global_tp + global_fn) if (global_tp + global_fn) > 0 else 0.0
+    micro_f1 = 2 * (micro_precision * micro_recall) / (micro_precision + micro_recall) if (micro_precision + micro_recall) > 0 else 0.0
+
+    if verbose:
+        print("-" * 65)
+        print(f"{'MACRO AVG':<12} | {'':<10} | {'':<10} | {macro_f1:.4f}     | {total_instances:<8}")
+        print(f"{'MICRO AVG':<12} | {micro_precision:.4f}     | {micro_recall:.4f}     | {micro_f1:.4f}     | {total_instances:<8}\n")
+
+    return macro_f1
+
+
+def get_detailed_metrics(true_labels: List[str], predicted_labels: List[str]) -> Dict[str, Tuple[float, float, float, int]]:
+    """
+    Return detailed per-class metrics without printing.
+    Returns: Dict mapping class -> (precision, recall, f1, support)
+    """
+    classes = set(true_labels)
+
+    tp_dict = defaultdict(int)
+    fp_dict = defaultdict(int)
+    fn_dict = defaultdict(int)
+    support_dict = defaultdict(int)
+
+    for true_l, pred_l in zip(true_labels, predicted_labels):
+        support_dict[true_l] += 1
+        if true_l == pred_l:
+            tp_dict[true_l] += 1
+        else:
+            fp_dict[pred_l] += 1
+            fn_dict[true_l] += 1
+
+    metrics = {}
+    total_f1 = 0.0
+
+    for c in sorted(classes):
+        tp = tp_dict[c]
+        fp = fp_dict[c]
+        fn = fn_dict[c]
+        support = support_dict[c]
+
+        precision = tp / (tp + fp) if (tp + fp) > 0 else 0.0
+        recall = tp / (tp + fn) if (tp + fn) > 0 else 0.0
+        f1 = 2 * (precision * recall) / (precision + recall) if (precision + recall) > 0 else 0.0
+
+        metrics[c] = (precision, recall, f1, support)
+        total_f1 += f1
+
+    # Add macro and micro averages
+    macro_f1 = total_f1 / len(classes)
+    metrics["MACRO AVG"] = (0.0, 0.0, macro_f1, len(true_labels))
+
+    # Calculate micro averages
+    global_tp = sum(tp_dict.values())
+    global_fp = sum(fp_dict.values())
+    global_fn = sum(fn_dict.values())
+
+    micro_precision = global_tp / (global_tp + global_fp) if (global_tp + global_fp) > 0 else 0.0
+    micro_recall = global_tp / (global_tp + global_fn) if (global_tp + global_fn) > 0 else 0.0
+    micro_f1 = 2 * (micro_precision * micro_recall) / (micro_precision + micro_recall) if (micro_precision + micro_recall) > 0 else 0.0
+
+    metrics["MICRO AVG"] = (micro_precision, micro_recall, micro_f1, len(true_labels))
+
+    return metrics
+
+
+def print_detailed_report(true_labels: List[str], predicted_labels: List[str], model_name: str = "Model"):
+    # Print a detailed classification report for a model
+    print(f"\n{'='*75}")
+    print(f"DETAILED REPORT: {model_name}")
+    print(f"{'='*75}\n")
+
+    metrics = get_detailed_metrics(true_labels, predicted_labels)
+
+    print(f"{'Class':<12} | {'Precision':<10} | {'Recall':<10} | {'F1-Score':<10} | {'Support':<8}")
+    print("-" * 75)
+
+    for class_name in sorted(metrics.keys()):
+        precision, recall, f1, support = metrics[class_name]
+        if class_name in ["MACRO AVG", "MICRO AVG"]:
+            print("-" * 75)
+            print(f"{class_name:<12} | {precision:.4f}     | {recall:.4f}     | {f1:.4f}     | {support:<8}")
+        else:
+            print(f"{class_name:<12} | {precision:.4f}     | {recall:.4f}     | {f1:.4f}     | {support:<8}")
+
+    print()
