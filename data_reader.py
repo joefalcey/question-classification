@@ -1,63 +1,52 @@
-import argparse
-import pathlib
-from collections.abc import Iterator
-
+from typing import List
+import random
 import nltk
-from nltk import WordNetLemmatizer as wnl
+from nltk.stem import WordNetLemmatizer
 
 try:
-    nltk.download('punkt_tab', quiet=True)
+    nltk.data.find('corpora/wordnet')
+except LookupError:
+    print("Downloading WordNet dictionary")
     nltk.download('wordnet', quiet=True)
     nltk.download('omw-1.4', quiet=True)
-    nltk.download('averaged_perceptron_tagger_eng', quiet=True)
-except Exception as e:
-    print(f'Error downloading NLTK package: {e}')
 
-parser = argparse.ArgumentParser(
-    description='Reads question data for classification prediction')
-parser.add_argument('-v', '--verbose', action='store_true',
-                    help='Turns on verbose mode')
-parser.add_argument('-l', '--lemmatization', action='store_true',
-                    help='Lemmatizes tokenized data')
-args = parser.parse_args()
-
-def read_data(file: pathlib.Path) -> list:
-    file_data = []
-    with open(file, 'r', encoding='utf-8', errors="ignore") as f:
-        for line in f.readlines():
-            split_line = line.split(':', 1)
-            coarse_label = split_line[0]
-            fine_label = split_line[1].split(' ', 1)[0]
-            text = split_line[1].split(' ', 1)[1]
-            label = (coarse_label, fine_label)
-            if not args.lemmatization:
-                tokens = [token.lower() for token in text.split() if token.isalnum()
-                          or '\'' in token]
-            else:
-                tokens = [wnl().lemmatize(token).lower() for token in text.split()
-                          if token.isalnum() or '\'' in token]
-            file_data.append([label, tokens])
-    return file_data
+_global_lemmatizer = WordNetLemmatizer()
 
 class Text:
-    def __init__(self, line: list):
-        self.label, self.tokens = line
+    def __init__(self, label: str, raw_text: str, lemmatize: bool = False):
+        self.label = label
+        
+        if lemmatize:
+            words = raw_text.lower().split()
+            self.text = " ".join([_global_lemmatizer.lemmatize(w) for w in words])
+        else:
+            self.text = raw_text
 
-    def __iter__(self) -> Iterator[list]:
-        yield self.label
-        yield self.tokens
+    def __repr__(self):
+        return f"[{self.label}] {self.text}"
 
-    def __len__(self) -> int:
-        return len(self.tokens)
-
-    def __repr__(self) -> str:
-        return f"[{self.label!r}] {self.tokens!r}"
+def read(filename: str, lemmatize: bool = False) -> List[Text]:
+    texts = []
+    with open(filename, 'r', encoding='latin-1') as file:
+        for line in file:
+            clean_line = line.strip()
+            if not clean_line:
+                continue
+                
+            parts = clean_line.split(" ", 1)
+            if len(parts) == 2:
+                label_block = parts[0]
+                question_text = parts[1]
+                fine_label = label_block
+                
+                text_obj = Text(fine_label, question_text, lemmatize=lemmatize)
+                texts.append(text_obj)
+                
+    return texts
 
 if __name__ == "__main__":
-    import pathlib
-    import os
-    path = pathlib.Path(os.getcwd()) / 'data'
-    train_file = path / 'train_5500.label'
-    data = read_data(train_file)
-    text = [Text(line) for line in data]
-    print(text)
+    file_path = "data/train_1000.label" 
+    questions_data = read(file_path)
+    random_samples = random.sample(questions_data, 10)
+    for i in random_samples:
+        print (i)
