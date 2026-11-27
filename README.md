@@ -1,5 +1,7 @@
 # Question Classification Benchmark
 
+This independent reimplementation of our Team Lab project is currently under active construction.
+
 A benchmark repository comparing from-scratch multiclass perceptron classifiers against a fine-tuned BERT model and standard baselines for automated question classification.
 
 Developed as part of the **Team Lab** module in the M.Sc. Computational Linguistics program at the University of Stuttgart (IMS).
